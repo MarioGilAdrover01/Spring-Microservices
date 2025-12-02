@@ -2,11 +2,28 @@
     "configurations": [
         {
             "type": "java",
+            "name": "OrdersMicroserviceApplication",
+            "request": "launch",
+            "mainClass": "com.microservices.orders.OrdersMicroserviceApplication",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-ProductsMicroserviceApplication<products-microservice>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "mainClass": "com.microservices.products.ProductsMicroserviceApplication",
             "projectName": "products-microservice",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-OrdersMicroserviceApplication<orders-microservice>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.microservices.orders.OrdersMicroserviceApplication",
+            "projectName": "orders-microservice",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
