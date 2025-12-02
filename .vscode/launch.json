@@ -26,6 +26,16 @@
             "projectName": "orders-microservice",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-InventoryMicroserviceApplication<inventory-microservice>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.microservices.inventory.InventoryMicroserviceApplication",
+            "projectName": "inventory-microservice",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
