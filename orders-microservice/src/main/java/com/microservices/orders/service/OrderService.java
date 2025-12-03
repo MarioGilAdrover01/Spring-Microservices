@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import com.microservices.orders.client.InventoryClient;
 import com.microservices.orders.dto.OrderRequest;
 import com.microservices.orders.dto.OrderResponse;
 import com.microservices.orders.model.Order;
@@ -18,8 +19,16 @@ import lombok.extern.slf4j.Slf4j;
 public class OrderService {
 
     private final OrderRepository orderRepository;
+    private final InventoryClient inventoryClient;
     
     public OrderResponse createOrder(OrderRequest orderRequest) {
+
+        boolean isProductInStock = inventoryClient.isInStock(orderRequest.skuCode(), orderRequest.quantity());
+
+        if (!isProductInStock)
+            throw new RuntimeException("There are not " + orderRequest.quantity()
+                + " unities of the product with sku code " + orderRequest.skuCode() + " in stock.");
+
         Order order = Order.builder()
                 .orderNumber(UUID.randomUUID().toString())
                 .skuCode(orderRequest.skuCode())
